@@ -12,7 +12,7 @@ services:
       - apache
       - varnish
     volumes:
-      - ./magento2:/var/www/html
+      - ../application:/var/www/html
       - ./varnish.secret:/varnish.secret
 
   ssl:
@@ -50,8 +50,9 @@ services:
       - cache
       - clusterdata
     volumes:
-      - ./magento2:/var/www/html
+      - ../application:/var/www/html
       - ~/.composer/auth.json:/root/.composer/auth.json
+      - ./php.ini:/usr/local/etc/php/php.ini
 
   db:
     image: mariadb
