@@ -2,6 +2,7 @@ version: '2'
 services:
   cron:
     image: fballiano/magento2-cron
+    build: ./builds/cron/
     depends_on:
       - apache
       - varnish
@@ -17,6 +18,7 @@ services:
 
   ssl:
     image: fballiano/nginx-ssl-for-magento2
+    build: ./builds/ssl/
     depends_on:
       - varnish
     links:
@@ -26,6 +28,7 @@ services:
 
   varnish:
     image: fballiano/varnish
+    build: ./builds/varnish/
     ports:
       - "80:80"
       - "6082:6082"
@@ -41,6 +44,7 @@ services:
 
   apache:
     image: fballiano/magento2-apache-php
+    build: ./builds/apache/
     depends_on:
       - db
       - cache
@@ -56,6 +60,7 @@ services:
 
   db:
     image: mariadb
+    build: ./builds/db/
     ports:
       - "3306:3306"
     volumes_from:
