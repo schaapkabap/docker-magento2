@@ -1,4 +1,6 @@
 version: '2'
+volumes:
+  my-datavolume:
 services:
   cron:
     image: fballiano/magento2-cron
@@ -74,10 +76,12 @@ services:
   dbdata:
     image: tianon/true
     volumes:
-      - /var/lib/mysql
+      - ./datavolume:/var/lib/mysql
 
   cache:
     image: fballiano/redis-volatile
 
   clusterdata:
     image: fballiano/redis-volatile
+    
+    
