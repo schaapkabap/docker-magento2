@@ -1,6 +1,6 @@
 version: '2'
 volumes:
-  my-datavolume:
+  datavolume:
 services:
   cron:
     image: fballiano/magento2-cron
